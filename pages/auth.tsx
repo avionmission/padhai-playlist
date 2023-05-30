@@ -25,13 +25,15 @@ const Auth = () => {
                             {variant === 'login' ? 'Sign in' : 'Create Account'}
                         </h2>
                         <div className="flex flex-col gap-4">
-                            <Input
+                            {variant === 'register' && (
+                                <Input
                                 label="Username"
                                 onChange={(ev: any) => setUsername(ev.target.value)}
                                 id="username"
                                 type="username"
                                 value={username}
                             />
+                            )}
                             <Input
                                 label="Email"
                                 onChange={(ev: any) => setEmail(ev.target.value)}
@@ -48,12 +50,12 @@ const Auth = () => {
                             />
                         </div>
                         <button className="bg-yellow-500 py-3 text-white rounded-md w-full mt-10 hover:bg-yellow-600 transition">
-                            Login
+                            {variant === 'login' ? 'Log in':'Sign Up'}
                         </button>
                         <p className="text-neutral-500 mt-12 text-sm">
-                            First time using PadhaiPlaylist?
+                            {variant === 'login' ? 'First time using PadhaiPlaylist?':'Already have account?'}
                             <span className="text-white ml-1 hover:underline cursor-pointer" onClick={toggleVariant}>
-                                Create Account
+                                {variant === 'login' ? 'Create Account' : 'Log in'}
                             </span>
                         </p>
                     </div>
