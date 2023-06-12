@@ -1,16 +1,34 @@
+import axios from "axios";
 import Input from "@/components/input";
 import { useCallback, useState } from "react";
+import {signIn} from 'next-auth/react'
 
 const Auth = () => {
 
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
+    const [name, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const [variant, setVariant] = useState('login')
 
     const toggleVariant = useCallback(()=>{
         setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login')
+    }, [])
+
+    const register = useCallback(async () => {
+        try {
+            await axios.post('/api/register', {
+                email,
+                name,
+                password,
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    },[email, name, password])
+
+    const login = useCallback(async () => {
+
     }, [])
 
     return (
@@ -31,7 +49,7 @@ const Auth = () => {
                                 onChange={(ev: any) => setUsername(ev.target.value)}
                                 id="username"
                                 type="username"
-                                value={username}
+                                value={name}
                             />
                             )}
                             <Input
@@ -49,7 +67,7 @@ const Auth = () => {
                                 value={password}
                             />
                         </div>
-                        <button className="bg-yellow-500 py-3 text-white rounded-md w-full mt-10 hover:bg-yellow-600 transition">
+                        <button onClick={register} className="bg-yellow-500 py-3 text-white rounded-md w-full mt-10 hover:bg-yellow-600 transition">
                             {variant === 'login' ? 'Log in':'Sign Up'}
                         </button>
                         <p className="text-neutral-500 mt-12 text-sm">
