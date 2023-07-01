@@ -31,7 +31,6 @@ const Billboard = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     )
 }

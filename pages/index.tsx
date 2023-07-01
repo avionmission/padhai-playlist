@@ -5,7 +5,9 @@ import Navbar from '@/components/Navbar';
 
 import Billboard from '@/components/Billboard';
 
-import useCurrentUser from '@/hooks/useCurrentUser';
+import CourseList from '@/components/CourseList';
+
+import useCourseList from '@/hooks/useCourseList';
 
 export async function getServerSideProps(context:NextPageContext) {
   const session = await getSession(context);
@@ -25,12 +27,16 @@ export async function getServerSideProps(context:NextPageContext) {
 }
 
 export default function Home() {
-  const { data: user } = useCurrentUser();
+  const { data: courses = [] } = useCourseList();
 
   return (
     <>
       <Navbar />
       <Billboard />
+      <div className='pb-40'>
+        <CourseList title='Trending Now' data={courses}/>
+      </div>
+      
     </>
   )
 }
