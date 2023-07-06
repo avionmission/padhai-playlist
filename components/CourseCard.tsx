@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BsFillPlayFill } from 'react-icons/bs';
+import FavoriteButton from './FavoriteButton';
 
 interface CourseCardProps {
     data: Record<string, any>;
@@ -10,7 +11,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
     data
 }) => {
     return (
-        <div className='group bg-zinc-900 col-span relative h-[23vw]'>
+        <div className='group bg-zinc-900 col-span relative h-[12vw]'>
             <img 
             className='
                 cursor-pointer
@@ -85,6 +86,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                         '>
                             <BsFillPlayFill size={20}/>
                         </div>
+                        <FavoriteButton courseId={data?.id}/>
                     </div>
 
                     <p className='text-green-400 font-semibold mt-4'>
