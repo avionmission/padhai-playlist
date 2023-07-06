@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
 import { BsFillPlayFill } from 'react-icons/bs';
 import FavoriteButton from './FavoriteButton';
 
@@ -10,6 +12,9 @@ interface CourseCardProps {
 const CourseCard: React.FC<CourseCardProps> = ({
     data
 }) => {
+
+    const router = useRouter();
+
     return (
         <div className='group bg-zinc-900 col-span relative h-[12vw]'>
             <img 
@@ -69,7 +74,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                     rounded-b-md
                 '>
                     <div className='flex flex-row items-center gap-3'>
-                        <div onClick={() => {}}
+                        <div onClick={() => router.push(`/watch/${data?.id}`)}
                         className='
                             cursor-pointer
                             w-6
@@ -83,7 +88,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
                             items-center
                             transition
                             hover:bg-neutral-300
-                        '>
+                        '
+                        >
                             <BsFillPlayFill size={20}/>
                         </div>
                         <FavoriteButton courseId={data?.id}/>
