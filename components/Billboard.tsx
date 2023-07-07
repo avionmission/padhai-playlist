@@ -1,12 +1,22 @@
 import useBillboard from '@/hooks/useBillboard';
 import React from 'react';
+import {useCallback} from 'react';
 
 import {AiOutlineInfoCircle} from 'react-icons/ai'
 import PlayButton from './PlayButton';
+import useInfoModal from '@/hooks/useInfoModal';
 
 const Billboard = () => {
 
     const {data} = useBillboard();
+    const {openModal} = useInfoModal();
+
+    const handleOpenModal = useCallback(() =>{
+        openModal(data?.id);
+    },
+    [openModal, data?.id]
+    )
+    
 
     console.log(data?.id)
 
@@ -31,7 +41,7 @@ const Billboard = () => {
                     
                     <PlayButton courseId={data?.id}/>
                     
-                    <button className='bg-white text-white bg-opacity-30 rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition'>
+                    <button onClick={handleOpenModal} className='bg-white text-white bg-opacity-30 rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition'>
                         <AiOutlineInfoCircle className="mr-1"/>
                         More Info
                     </button>

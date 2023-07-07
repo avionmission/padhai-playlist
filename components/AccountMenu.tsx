@@ -1,4 +1,6 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 import React from 'react'
 
 interface AccountMenuProps {
@@ -7,6 +9,10 @@ interface AccountMenuProps {
 
 const AccountMenu: React.FC<AccountMenuProps> = ({visible}) => {
 
+    const { data } = useCurrentUser();
+    const router = useRouter();
+
+
     if (!visible) {
         return null;
     }
@@ -14,10 +20,10 @@ const AccountMenu: React.FC<AccountMenuProps> = ({visible}) => {
     return (
         <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border">
             <div className="flex flex-col gap-3">
-                <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
+                <div onClick={() => {router.push('/profiles')}} className="px-3 group/item flex flex-row gap-3 items-center w-full">
                     <img className="w-8 rounded-md" src="/images/default-blue.png" alt="" />
                     <p className="text-white text-sm group-hover/item:underline">
-                        Username
+                        {data?.name}
                     </p>
                 </div>
                 <hr className="bg-gray-600 border-0 h-px my-4"/>
