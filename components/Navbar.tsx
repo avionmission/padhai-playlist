@@ -5,14 +5,17 @@ import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
 
 import {BsBell, BsChevronDown, BsSearch} from 'react-icons/bs'
+import { useRouter } from "next/router";
 
 const TOP_OFFSET = 66;
 
 const Navbar = () => {
 
-    const [showMobileMenu, setShowMobileMenu] = useState(true);
-    const [showAccountMenu, setShowAccountMenu] = useState(true);
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [showAccountMenu, setShowAccountMenu] = useState(false);
     const [showBackground, setShowBackground] = useState(true);
+
+    const router = useRouter();
 
     useEffect(() => {
 
@@ -54,7 +57,7 @@ const Navbar = () => {
                     duration-500
                     ${showBackground ? 'bg-yellow-500 bg-opacity-85':''}
                     `}>
-                <img className="lg:h-12" src="/images/logo.png" alt="" />
+                <img className="h-12" src="/images/logo.png" alt="" />
                 <div 
                     className="
                         flex-row
@@ -66,9 +69,9 @@ const Navbar = () => {
 
                         
                     ">
-                    <NavbarItem label="Home"/>
-                    <NavbarItem label="Courses"/>
-                    <NavbarItem label="About Us"/>
+                    <div onClick={() => {router.push('/')}}><NavbarItem label="Home" /></div>
+                    <div onClick={() => {router.push('/all')}}><NavbarItem label="Courses"/></div>
+                    <div onClick={() => {router.push('/about')}}><NavbarItem label="About Us"/></div>
                     
                 </div>
                 <div onClick={toggleMobileMenu} className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
