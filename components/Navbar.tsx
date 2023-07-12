@@ -57,7 +57,7 @@ const Navbar = () => {
                     duration-500
                     ${showBackground ? 'bg-yellow-500 bg-opacity-85':''}
                     `}>
-                <img className="h-12" src="/images/logo.png" alt="" />
+                <img className="h-12 cursor-pointer" src="/images/logo.png" alt="" onClick={() => {router.push('/')}}/>
                 <div 
                     className="
                         flex-row
