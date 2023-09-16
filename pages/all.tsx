@@ -31,7 +31,7 @@ const AllCourses = () => {
         <div className="flex h-full justify-center">
                 <Navbar/>
 
-                <div className="mt-20">
+                <div className="mt-[6.5vw]">
                     <CourseList title='All Courses' data={courses}/>
                 </div>
                 

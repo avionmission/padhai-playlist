@@ -31,8 +31,8 @@ const About = () => {
         <div className="flex h-full">
                 <Navbar/>
 
-                <div className="mt-24 ml-5 mr-5 text-left">
-                    <p className="text-2xl bold text-white">About Us</p>
+                <div className="mt-[6.5vw] ml-5 mr-5 text-left">
+                    <p className="text-2xl text-yellow-500">About Us</p>
                     <div className="text-md mt-3 text-white">
                         
                     <p>Welcome to PadhaiPlaylist, the premier online video course management platform designed to revolutionize the way you learn and organize educational content.</p>

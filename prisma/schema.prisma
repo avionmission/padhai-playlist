@@ -70,7 +70,3 @@ model Course {
   genre String
   duration String
 }
-
-
-
-
