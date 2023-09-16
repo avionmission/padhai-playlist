@@ -3,7 +3,21 @@ The Netflix Experinece for Students who like studying online. If you're going to
 
 ## Getting Started
 
-First, run the development server:
+First, add you API keys and mongodb connection string in a `.env` file:
+```
+DATABASE_URL=
+NEXTAUTH_JWT_SECRET="NEXT-JWT-SECRET"
+NEXTAUTH_SECRET="NEXT-SECRET"
+NEXTAUTH_URL=http://localhost:3000/
+
+GITHUB_ID=
+GITHUB_SECRET=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
+
+Run the development server:
 
 ```bash
 npm run dev
